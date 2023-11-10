@@ -78,6 +78,10 @@ GEM
       kaminari (>= 1.0)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+    argon2 (2.3.0)
+      ffi (~> 1.15)
+      ffi-compiler (~> 1.0)
+    bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
@@ -91,6 +95,14 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    clearance (2.6.1)
+      actionmailer (>= 5.0)
+      activemodel (>= 5.0)
+      activerecord (>= 5.0)
+      argon2 (~> 2.0, >= 2.0.2)
+      bcrypt (>= 3.1.1)
+      email_validator (~> 2.0)
+      railties (>= 5.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cuprite (0.15)
@@ -100,6 +112,9 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    diff-lcs (1.5.0)
+    email_validator (2.2.4)
+      activemodel
     erubi (1.12.0)
     ferrum (0.14)
       addressable (~> 2.5)
@@ -107,6 +122,9 @@ GEM
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
     ffi (1.16.3)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -207,6 +225,23 @@ GEM
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.3)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -216,6 +251,8 @@ GEM
       sprockets-rails
       tilt
     selectize-rails (0.12.6)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -257,12 +294,15 @@ DEPENDENCIES
   administrate (~> 0.19.0)
   bootsnap
   capybara
+  clearance (~> 2.6)
   cuprite
   debug
   importmap-rails
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.8)
+  rspec-rails (~> 6.0)
+  shoulda-matchers (~> 5.3)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
