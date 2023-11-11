@@ -17,5 +17,13 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+
+    helper_method :render_record 
+    
+    def render_record
+      render partial: "collection_record", locals: {collection_presenter: collection_presenter,
+                        collection_field_name: collection_field_name, page: page, namespace: namespace, resource:
+                        resource, table_title: "page-title"}
+    end
   end
 end

@@ -23,7 +23,6 @@ class DelegateDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    conferences
     department
     name
   ].freeze
