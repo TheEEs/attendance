@@ -79,3 +79,5 @@ gem "acts-as-taggable-on", "~> 9.0"
 
 
 gem "clearance", "~> 2.6"
+
+gem "pundit", "~> 2.3"
