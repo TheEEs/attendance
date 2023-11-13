@@ -54,12 +54,11 @@ to display a collection of resources in an HTML table.
       ) %>
     </tr>
   </thead>
-
   <tbody id="records">
     <% resources.each do |resource| %>
       <%= render partial: "collection_record", locals: {collection_presenter: collection_presenter,
                         collection_field_name: collection_field_name, page: page, namespace: namespace, resource:
-                        resource, table_title: "page-title"}%>
+                        resource, table_title: "page-title"} %>
     <% end %>
   </tbody>
 </table>
