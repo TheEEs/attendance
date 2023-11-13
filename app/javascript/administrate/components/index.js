@@ -1,5 +1,5 @@
 import $ from 'jquery'
-document.addEventListener("turbo:load", function () {
+function initializeSelectizeElements () {
     $('.field-unit--belongs-to select').selectize({});
     $(".field-unit--has-many select").selectize({});
     $('.field-unit--polymorphic select').selectize({});
@@ -25,4 +25,6 @@ document.addEventListener("turbo:load", function () {
 
     $("table").on("click", ".js-table-row", visitDataUrl);
     $("table").on("keydown", ".js-table-row", visitDataUrl);
-})
+}
+document.addEventListener("turbo:load", initializeSelectizeElements)
+document.addEventListener("turbo:frame-load", initializeSelectizeElements)
