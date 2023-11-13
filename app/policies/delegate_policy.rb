@@ -6,7 +6,13 @@ class DelegatePolicy < ApplicationPolicy
     end
   end
 
-  def update? 
-    true 
-  end
+  def update? = true 
+  
+  def destroy? = true 
+
+  def create? = true
+
+  def show? = true 
+  
+  def index? = true
 end

@@ -27,5 +27,5 @@
     ) if accessible_action?(new_resource, :new) %>
   </div>
 </header>
-<%= turbo_frame_tag new_resource do %>
+<%= turbo_frame_tag new_resource, target: "_top" do %>
 <% end %>

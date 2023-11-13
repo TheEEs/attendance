@@ -1,4 +1,4 @@
-<tr class="js-table-row" <% if accessible_action?(resource, :show) %>
+<tr id="<%= dom_id resource %>" class="js-table-row" <% if accessible_action?(resource, :show) %>
     <%= %(tabindex=0 role=link data-url=#{polymorphic_path([namespace, resource])}) %>
         <% end %>
             >

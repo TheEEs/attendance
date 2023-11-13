@@ -6,13 +6,13 @@ class ConferencePolicy < ApplicationPolicy
     end
   end
 
+  def index? = true
+  
   def show? = true
 
   def update? = true 
+
+  def create? = true 
   
-  def create? = true
-
-  def index? = true
-
   def destroy? = true
 end
