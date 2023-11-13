@@ -10,18 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_10_172524) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_13_114508) do
+  create_table "attends", force: :cascade do |t|
+    t.integer "conference_id", null: false
+    t.integer "delegate_id", null: false
+    t.boolean "attented"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conference_id"], name: "index_attends_on_conference_id"
+    t.index ["delegate_id"], name: "index_attends_on_delegate_id"
+  end
+
   create_table "conferences", force: :cascade do |t|
     t.string "name"
     t.datetime "start_when"
     t.string "locate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "conferences_delegates", id: false, force: :cascade do |t|
-    t.integer "conference_id", null: false
-    t.integer "delegate_id", null: false
   end
 
   create_table "delegates", force: :cascade do |t|
@@ -43,4 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_10_172524) do
     t.index ["remember_token"], name: "index_users_on_remember_token", unique: true
   end
 
+  add_foreign_key "attends", "conferences"
+  add_foreign_key "attends", "delegates"
 end

@@ -1,5 +1,6 @@
 class Conference < ApplicationRecord
-  has_and_belongs_to_many :delegates
+  has_many :attends
+  has_many :delegates, through: :attends, inverse_of: :conferences
   validates :name, presence: true
   validates :start_when, presence: true
 
