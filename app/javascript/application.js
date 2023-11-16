@@ -3,3 +3,17 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@selectize/selectize"
 import "./administrate/components"
+import Swal from "sweetalert2"
+
+Turbo.setConfirmMethod(async (title) => {
+    const confirmation = await Swal.fire({
+        title,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true
+    })
+    if (confirmation.isConfirmed)
+        return true;
+    else
+        return false;
+})
