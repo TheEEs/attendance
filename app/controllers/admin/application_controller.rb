@@ -27,6 +27,7 @@ module Admin
     end
 
     def destroy
+      authorize_resource(requested_resource)
       detach_params = self.detach_params
       @detach = detach_params[:detach] == "true" and @detach_class = detach_params[:parent_class] and @detach_id = detach_params[:parent_id]
       unless @detach 
@@ -38,12 +39,35 @@ module Admin
         redirect_to after_resource_destroyed_path(requested_resource)
       else
         @detach_class = @detach_class.pluralize
-        if requested_resource.send(@detach_class).delete(@parent_record = Conference.find(@detach_id))
-          flash[:notice] = translate_with_resource("destroy.success")
+        if @parent_records = requested_resource.send(@detach_class).delete(@detach_id)
+          flash.now[:notice] = translate_with_resource("detach.success")
+          return render turbo_stream: [
+            turbo_stream.remove(requested_resource),
+            turbo_stream.replace("flashes", partial: "admin/application/flashes")
+          ]
         else
-          flash[:error] = requested_resource.errors.full_messages.join("<br/>")
+          flash.now[:error] = requested_resource.errors.full_messages.join("<br/>")
         end
-        redirect_to url_for([namespace, @parent_record])
+        redirect_to url_for([namespace, @parent_records.first])
+      end
+    end
+
+    def create
+      resource = new_resource(resource_params)
+      authorize_resource(resource)
+
+      if resource.save
+        redirect_to(
+          after_resource_created_path(resource),
+          notice: translate_with_resource("create.success"),
+        )
+      else
+        render turbo_stream: [
+          turbo_stream.replace(resource, partial: "form", locals: {
+            page: Administrate::Page::Form.new(dashboard, resource)
+          })
+        ] , status: :unprocessable_entity
+        
       end
     end
 

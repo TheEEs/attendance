@@ -34,3 +34,6 @@ en:
   administrate:
     actions:
       detach: Detach
+    controller:
+      detach: 
+        success: "Detached %{resource} successfully"

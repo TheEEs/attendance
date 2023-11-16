@@ -65,7 +65,7 @@ class ConferenceDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how conferences are displayed
   # across all pages of the admin dashboard.
   #
-  #def display_resource(conference)
-   # "#{I18n::translate"Conference"} ##{conference.id}"
-  #end
+  def display_resource(conference)
+    conference.name
+  end
 end
