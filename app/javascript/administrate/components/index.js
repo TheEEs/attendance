@@ -1,9 +1,10 @@
 import $ from 'jquery'
 function initializeSelectizeElements () {
-    $('.field-unit--belongs-to select').selectize({});
+    /*$('.field-unit--belongs-to select').selectize({});
     $(".field-unit--has-many select").selectize({});
     $('.field-unit--polymorphic select').selectize({});
-    $('.field-unit--select select').selectize({});
+    $('.field-unit--select select').selectize({});*/
+
     var keycodes = { space: 32, enter: 13 };
 
     var visitDataUrl = function (event) {
