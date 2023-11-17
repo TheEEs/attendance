@@ -33,9 +33,11 @@ from the associated resource class's dashboard.
       resource_class: field.associated_class,
       field: field
     ) %>
-    <% if field.more_than_limit? %>
-      <%= render("pagination", resources: field.resources(page_number), param_name: "#{field.name}[page]") %>
-    <% end %>
+    <div id="has_many_pagination">
+      <% if field.more_than_limit? %>
+        <%= render("pagination", resources: field.resources(page_number), param_name: "#{field.name}[page]") %>
+      <% end %>
+    </div>
   <% end %>
 <% else %>
   <%= t("administrate.fields.has_many.none", default: "–") %>
