@@ -40,13 +40,13 @@ module Admin
       else
         @detach_class = @detach_class.pluralize
         if @parent_records = requested_resource.send(@detach_class).delete(@detach_id)
-          flash.now[:notice] = translate_with_resource("detach.success")
+          flash[:notice] = translate_with_resource("detach.success")
           #return render turbo_stream: [
           #  turbo_stream.remove(requested_resource),
           #  turbo_stream.replace("flashes", partial: "admin/application/flashes")
           #]
         else
-          flash.now[:error] = requested_resource.errors.full_messages.join("<br/>")
+          flash[:error] = requested_resource.errors.full_messages.join("<br/>")
         end
         redirect_to url_for([namespace, @parent_records.first])
         #render :show, locals: {
