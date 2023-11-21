@@ -7,12 +7,12 @@ class ConferencePolicy < ApplicationPolicy
   end
 
   def index? = true
-  
+
   def show? = true
 
-  def update? = true 
+  def update? = true
 
-  def create? = true 
-  
+  def create? = true
+
   def destroy? = true
 end

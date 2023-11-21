@@ -62,5 +62,4 @@ class DelegateDashboard < Administrate::BaseDashboard
   def display_resource(delegate)
     "#{delegate.name} - #{delegate.department}"
   end
-  #
 end

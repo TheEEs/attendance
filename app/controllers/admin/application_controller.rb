@@ -8,9 +8,8 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     include Clearance::Controller
     include Administrate::Punditize
-    
-    #before_action :require_login
 
+    # before_action :require_login
 
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
@@ -18,19 +17,19 @@ module Admin
     #   params[:per_page] || 20
     # end
 
-    helper_method :render_record 
-    
+    helper_method :render_record
+
     def render_record
-      render partial: "collection_record", locals: {collection_presenter: collection_presenter,
-                        collection_field_name: collection_field_name, page: page, namespace: namespace, resource:
-                        resource, table_title: "page-title"}
+      render partial: "collection_record", locals: { collection_presenter: collection_presenter,
+                                                     collection_field_name: collection_field_name, page: page, namespace: namespace, resource:
+                        resource, table_title: "page-title" }
     end
 
     def destroy
       authorize_resource(requested_resource)
       detach_params = self.detach_params
       @detach = detach_params[:detach] == "true" and @detach_class = detach_params[:parent_class] and @detach_id = detach_params[:parent_id]
-      unless @detach 
+      unless @detach
         if requested_resource.destroy
           flash[:notice] = translate_with_resource("destroy.success")
         else
@@ -60,33 +59,33 @@ module Admin
       else
         render turbo_stream: [
           turbo_stream.replace(resource, partial: "form", locals: {
-            page: Administrate::Page::Form.new(dashboard, resource)
-          })
-        ] , status: :unprocessable_entity
-        
+                                 page: Administrate::Page::Form.new(dashboard, resource)
+                               })
+        ], status: :unprocessable_entity
+
       end
     end
 
-    def show 
-      super  
+    def show
+      super
     end
 
+    private
 
-    private 
     def detach_params
       params.permit(:detach, :parent_id, :parent_class)
     end
 
-    helper_method :query_string 
+    helper_method :query_string
 
-    private 
+    private
+
     def query_string
-      request.query_string 
+      request.query_string
     end
 
     def pagination_params(name)
-      params.permit(name.pluralize => {}).to_query 
+      params.permit(name.pluralize => {}).to_query
     end
-
   end
 end
