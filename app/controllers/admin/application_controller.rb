@@ -41,17 +41,10 @@ module Admin
         @detach_class = @detach_class.pluralize
         if @parent_records = requested_resource.send(@detach_class).delete(@detach_id)
           flash[:notice] = translate_with_resource("detach.success")
-          #return render turbo_stream: [
-          #  turbo_stream.remove(requested_resource),
-          #  turbo_stream.replace("flashes", partial: "admin/application/flashes")
-          #]
         else
           flash[:error] = requested_resource.errors.full_messages.join("<br/>")
         end
-        redirect_to url_for([namespace, @parent_records.first])
-        #render :show, locals: {
-        #  page: Administrate::Page::Show.new(dashboard, requested_resource),
-        #}
+        redirect_to "#{url_for([namespace, @parent_records.first])}?#{pagination_params(resource_name.name)}"
       end
     end
 
@@ -74,9 +67,25 @@ module Admin
       end
     end
 
+    def show 
+      super  
+    end
+
+
     private 
     def detach_params
       params.permit(:detach, :parent_id, :parent_class)
+    end
+
+    helper_method :query_string 
+
+    private 
+    def query_string
+      request.query_string 
+    end
+
+    def pagination_params(name)
+      params.permit(name.pluralize => {}).to_query 
     end
 
   end

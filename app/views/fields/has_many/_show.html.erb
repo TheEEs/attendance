@@ -20,8 +20,14 @@ from the associated resource class's dashboard.
 
 <% if field.resources.any? %>
   <% order = field.order_from_params(params.fetch(field.name, {})) %>
-  <% page_number = params.fetch(field.name, {}).fetch(:page, nil) %>
-  <%= turbo_frame_tag field.name do %>
+  <% page_number = i = params.fetch(field.name, {}).fetch(:page, nil).to_i %>
+  <%
+    if page_number > page_number = (field.data.count(:all).to_f / field.limit).ceil 
+    else 
+      page_number = i
+    end
+  %>
+  <%= turbo_frame_tag "has_many_#{field.name}" do   %>
   <% @field = Administrate::Field::HasMany %>
     <%= render(
       "fields/has_many/collection",
@@ -30,15 +36,14 @@ from the associated resource class's dashboard.
       page: page,
       resources: field.resources(page_number, order),
       table_title: field.name,
-      resource_class: field.associated_class,
-      field: field
+      resource_class: field.associated_class
     ) %>
     <div id="has_many_pagination">
       <% if field.more_than_limit? %>
         <%= render("pagination", resources: field.resources(page_number), param_name: "#{field.name}[page]") %>
       <% end %>
     </div>
-  <% end %>
+<% end %>
 <% else %>
   <%= t("administrate.fields.has_many.none", default: "–") %>
 <% end %>
