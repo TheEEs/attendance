@@ -9,7 +9,7 @@ module Admin
     include Clearance::Controller
     include Administrate::Punditize
 
-    # before_action :require_login
+    before_action :require_login
 
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
@@ -39,9 +39,9 @@ module Admin
       else
         @detach_class = @detach_class.pluralize
         if @parent_records = requested_resource.send(@detach_class).delete(@detach_id)
-          flash[:notice] = translate_with_resource("detach.success")
+          flash.now[:notice] = translate_with_resource("detach.success")
         else
-          flash[:error] = requested_resource.errors.full_messages.join("<br/>")
+          flash.now[:error] = requested_resource.errors.full_messages.join("<br/>")
         end
         redirect_to "#{url_for([namespace, @parent_records.first])}?#{pagination_params(resource_name.name)}"
       end
