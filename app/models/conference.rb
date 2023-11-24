@@ -1,4 +1,6 @@
 class Conference < ApplicationRecord
+  include Hashid::Rails
+  
   has_many :attends, dependent: :destroy
   has_many :delegates, through: :attends, inverse_of: :conferences
   validates :name, presence: true
