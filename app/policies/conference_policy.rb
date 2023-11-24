@@ -2,8 +2,14 @@ class ConferencePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      scope.where(user: user)
     end
+  end
+
+  attr :user, :conference
+  def initialize(user, conference)
+    @user = user 
+    @conference = conference
   end
 
   def index? = true
