@@ -7,8 +7,9 @@ class ConferencePolicy < ApplicationPolicy
   end
 
   attr :user, :conference
+
   def initialize(user, conference)
-    @user = user 
+    @user = user
     @conference = conference
   end
 

@@ -1,0 +1,21 @@
+<div class="flex justify-center flex-wrap w-full h-screen">
+  <div class="w-full flex justify-center items-center md:w-1/2">
+    <%= image_tag @qrCode.as_png(
+      size: 498,
+      color: ChunkyPNG::Color.from_hex("#0e7490")
+    ).to_data_url, class: "w-auto h-max"%>
+  </div>
+  <%= turbo_stream_from @conference %>
+  <div class="w-full mx-2 md:mx-0 md:px-3 flex flex-wrap md:w-1/2 justify-center md:items-center">
+    <div>
+      <h1 class="w-full font-semibold font-sans text-xl text-justify text-slate-400 py-3 text-justify"><%= @conference.name %></h1>
+      <%= render partial: "attended_number", locals: {
+        attended_number: @conference.attends.where(:attended => true).count,
+        total: @conference.attends.count, 
+        conference: @conference}
+      %>
+      <hr class="my-6"/>
+      <h1 class="w-full font-semibold font-sans text-xl bg-yellow-300 md:text-3xl text-yellow-700 px-2 py-3  text-justify md:text-center">Đại biểu quét mã QR để xác nhận tham dự</h1>
+    </div>
+  </div>
+</div>

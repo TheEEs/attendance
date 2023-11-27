@@ -6,15 +6,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+    integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    />
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto">
       <%= yield %>
     </main>
+    <footer class="fixed bottom-0 py-2 w-screen md:flex md:justify-between text-right bg-gradient-to-r from-cyan-500 to-violet-500">
+      <p class="text-sm font-semibold text-cyan-50 hide md:block hidden ml-4">Văn phòng HĐND và UBND huyện Thủy Nguyên</p>
+      <p class="text-sm text-violet-100 mr-4">Tran Ba Dat ©</p>
+    </footer>
   </body>
 </html>

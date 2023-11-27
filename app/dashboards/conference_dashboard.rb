@@ -66,6 +66,6 @@ class ConferenceDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(conference)
-    conference.name
+    conference.name.truncate 50
   end
 end

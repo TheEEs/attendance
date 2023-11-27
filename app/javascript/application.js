@@ -4,6 +4,8 @@ import "controllers"
 import "@selectize/selectize"
 import "./administrate/components"
 import Swal from "sweetalert2"
+import "chartkick"
+import "Chart.bundle"
 
 Turbo.setConfirmMethod(async (title) => {
     const confirmation = await Swal.fire({

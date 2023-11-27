@@ -1,4 +1,7 @@
 vi:
+  application:
+    actions:
+      attend: Xác nhận tham dự
   errors: 
     messages:
       blank: không được bỏ trống

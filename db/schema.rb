@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_24_180125) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_25_170657) do
   create_table "attends", force: :cascade do |t|
     t.integer "conference_id", null: false
     t.integer "delegate_id", null: false
-    t.boolean "attented"
+    t.boolean "attended", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conference_id"], name: "index_attends_on_conference_id"

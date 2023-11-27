@@ -1,0 +1,16 @@
+<div class="flex justify-center items-center flex-wrap w-full h-screen">
+  <div class="w-full mx-2 md:mx-0 md:px-3 flex flex-wrap md:w-1/2 justify-center md:items-center">
+    <div data-controller="selectize" class="w-full">
+      <p class="px-18 text-justify mb-5 text-2xl font-bold text-cyan-900"><%= @conference.name %></p>
+      <%= form_with url: make_attend_path(conference_id: @conference.id), class: "shadow-lg py-3 px-4 rounded-lg bg-sky-50"  do |f|%>
+        <%= f.label :attend_id, "Tên đại biểu", class: "text-sm text-blue-900"%>
+        <%= f.select(:attend_id, nil, {}, multiple: false, data: {selectize_target: "select"}) do %>
+          <%= options_for_select(
+            (@conference.attends.eager_load(:delegate).where(attended: false).map {|attend| [attend.delegate.display_title, attend.id]}),
+          ) %>
+        <% end %>
+        <%= f.submit t("application.actions.attend"), class: "bg-blue-200 cursor-pointer hover:bg-blue-300 hover:text-blue-600 rounded-md font-semibold px-3 py-2 mt-3 w-full text-blue-500" %>
+      <% end %>
+    </div>
+  </div>
+</div>
