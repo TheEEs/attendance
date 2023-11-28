@@ -1,4 +1,5 @@
 class Attend < ApplicationRecord
+  include Hashid::Rails
   belongs_to :conference
   belongs_to :delegate
 

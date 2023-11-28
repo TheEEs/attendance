@@ -1,7 +1,9 @@
 vi:
   application:
     actions:
-      attend: Xác nhận tham dự
+      attend: 
+        confirm: Xác nhận tham dự
+        failed: Tham dự thất bại 
   errors: 
     messages:
       blank: không được bỏ trống
