@@ -10,9 +10,10 @@ class AttendController < ApplicationController
 
   def make_attend
     @attend = Attend.find(attend_id)
-    @attend.update(attended: true)
-    @conference = @attend.conference
-    render "attend"
+    if @attend.update(attended: true)
+      @conference = @attend.conference
+      redirect_to attend_path(@conference)
+    end
   end
 
   private
