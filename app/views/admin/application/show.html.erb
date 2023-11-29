@@ -28,6 +28,14 @@ as well as a link to its edit page.
     </h1>
 
     <div>
+      <% if page.resource.is_a? Conference %>
+        <%= link_to(
+          t("application.actions.attend.show"),
+          show_attend_path(page.resource),
+          class: "button bg-teal-600 hover:bg-teal-700",
+        ) if accessible_action?(page.resource, :show) %>
+      <% end %>
+
       <%= link_to(
         t("administrate.actions.edit_resource", name: nil),
         [:edit, namespace, page.resource],

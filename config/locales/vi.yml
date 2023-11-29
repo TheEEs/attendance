@@ -4,6 +4,7 @@ vi:
       attend: 
         confirm: Xác nhận tham dự
         failed: Tham dự thất bại 
+        show: Hiển thị
   errors: 
     messages:
       blank: không được bỏ trống
