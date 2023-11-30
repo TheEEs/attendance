@@ -50,7 +50,9 @@ module Admin
     def create
       resource = new_resource(resource_params)
       authorize_resource(resource)
-
+      if resource.respond_to? :user=
+        resource.user = current_user 
+      end
       if resource.save
         redirect_to(
           after_resource_created_path(resource),
