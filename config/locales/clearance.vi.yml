@@ -1,5 +1,4 @@
----
-en:
+vi:
   clearance:
     models:
       clearance_mailer:
@@ -41,6 +40,7 @@ en:
   passwords:
     create:
       description: Bạn sẽ nhận được một email hướng dẫn đổi mật khẩu trong ít phút nữa.
+      back_to_home: Trở về trang chủ
     edit:
       description: Mật khẩu của bạn đã được đặt lại, lựa chọn một mật khẩu mới
       title: Đổi mật khẩu

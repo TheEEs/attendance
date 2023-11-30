@@ -1,18 +1,20 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
-
-  <p><%= t(".description") %></p>
-
-  <%= form_for :password_reset,
-        url: [@user, :password, token: @user.confirmation_token],
-        html: { method: :put } do |form| %>
-    <div class="password-field">
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
-
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-  <% end %>
+<div id="clearance" class="password-reset w-full h-screen flex justify-center items-center">
+  <div class="mx-3">
+    <h2 class="font-semibold text-3xl mb-1 text-sky-800"><%= t(".title") %></h2>
+    <section class="px-10 py-6 shadow-lg rounded-md bg-gradient-to-br from-sky-500 to-violet-400">
+      <p class="text-sm text-slate-200"><%= t(".description") %></p>
+      <%= form_for :password_reset,
+            url: [@user, :password, token: @user.confirmation_token],
+            html: { method: :put } do |form| %>
+        <div class="password-field flex justify-between items-baseline mt-6 gap-x-2">
+          <%= form.label :password, class: "text-sky-50" %>
+          <%= form.password_field :password, class: "shadow-inner grow rounded-md" %>
+        </div>
+        <hr class="border-sky-100 my-4"/>
+        <div class="submit-field w-full flex justify-center">
+          <%= form.submit class: "px-4 pt-2  cursor-pointer text-sky-100 font-semibold" %>
+        </div>
+      <% end %>
+    </section>
+  </div>
 </div>
