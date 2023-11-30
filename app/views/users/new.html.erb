@@ -1,0 +1,17 @@
+<div id="clearance" class="sign-up h-screen w-full flex items-center justify-center">
+  <div>
+    <h2 class="w-full font-semibold text-3xl mb-1 text-sky-800"><%= t(".title") %></h2>
+
+    <%= form_for @user, html: { class: "px-10 py-6 shadow-lg rounded-md bg-gradient-to-br from-sky-500 to-violet-400"} do |form| %>
+      <%= render partial: '/users/form', object: form %>
+
+      <div class="submit-field submit-field w-full flex justify-center my-2">
+        <%= form.submit class: "px-4 py-2  cursor-pointer text-sky-100 font-semibold" %>
+      </div>
+
+      <div class="text-sm text-slate-300 text-center">
+        <%= link_to t(".sign_in"), sign_in_path %>
+      </div>
+    <% end %>
+  </div>
+</div>

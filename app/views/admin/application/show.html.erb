@@ -33,6 +33,7 @@ as well as a link to its edit page.
           t("application.actions.attend.show"),
           show_attend_path(page.resource),
           class: "button bg-teal-600 hover:bg-teal-700",
+          target: "_blank" 
         ) if accessible_action?(page.resource, :show) %>
       <% end %>
 
