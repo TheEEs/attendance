@@ -5,6 +5,11 @@ class Delegate < ApplicationRecord
   validates :department, presence: true
 
   def display_title
-    "#{name} - #{department}"
+    delegate = self
+    if delegate.name
+      "#{delegate.name} - #{delegate.department}"
+    else
+      delegate.department
+    end
   end
 end

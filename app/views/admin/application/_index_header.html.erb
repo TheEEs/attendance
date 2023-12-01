@@ -2,7 +2,7 @@
   <%= display_resource_name(page.resource_name) %>
 <% end %>
 
-<header class="main-content__header">
+<header class="main-content__header mb-4">
   <h1 class="main-content__page-title" id="page-title">
     <%= content_for(:title) %>
   </h1>
@@ -12,7 +12,7 @@
       "search",
       search_term: search_term,
       resource_name: display_resource_name(page.resource_name),
-      resource_pluralized_name: page.resource_name.pluralize 
+      resource_pluralized_name: page.resource_name.pluralize
     ) %>
   <% end %>
 

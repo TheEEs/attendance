@@ -60,6 +60,10 @@ class DelegateDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(delegate)
-    "#{delegate.name} - #{delegate.department}"
+    if delegate.name
+      "#{delegate.name} - #{delegate.department}"
+    else
+      delegate.department
+    end
   end
 end
