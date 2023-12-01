@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_170657) do
     t.string "locate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", default: 1, null: false
+    t.integer "user_id", default: 0, null: false
     t.index ["user_id"], name: "index_conferences_on_user_id"
   end
 
