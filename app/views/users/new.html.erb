@@ -1,5 +1,8 @@
 <div id="clearance" class="sign-up h-screen w-full flex items-center justify-center">
   <div class="mx-3">
+    <% flash.each do |key,value| %>
+      <p class="text-sm text-rose-400"><%= value %></p>
+    <% end %>
     <h2 class="w-full font-semibold text-3xl mb-1 text-sky-800"><%= t(".title") %></h2>
 
     <%= form_for @user, html: { class: "px-10 py-6 shadow-lg rounded-md bg-gradient-to-br from-sky-500 to-violet-400"} do |form| %>

@@ -1,5 +1,8 @@
 <div id="clearance" class="password-reset w-full h-screen flex justify-center items-center">
   <div class="mx-3">
+    <% flash.each do |key,value| %>
+      <p class="text-sm text-rose-400"><%= value %></p>
+    <% end %>
     <h2 class="font-semibold text-3xl mb-1 text-sky-800"><%= t(".title") %></h2>
     <section class="px-10 py-6 shadow-lg rounded-md bg-gradient-to-br from-sky-500 to-violet-400">
       <p class="text-sm text-slate-200"><%= t(".description") %></p>
