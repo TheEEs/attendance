@@ -28,7 +28,6 @@ from the associated resource class's dashboard.
     end
   %>
   <%= turbo_frame_tag "has_many_#{field.name}" do   %>
-  <% @field = Administrate::Field::HasMany %>
     <%= render(
       "fields/has_many/collection",
       collection_presenter: field.associated_collection(order),
