@@ -1,0 +1,21 @@
+<tr id="<%= dom_id resource %>" class="js-table-row" <% if accessible_action?(resource, :show) %>
+    <%= %(tabindex=0 role=link data-url=#{polymorphic_path([namespace, resource])}) %>
+        <% end %>
+            >
+            <% collection_presenter.attributes_for(resource).each do |attribute| %>
+                <td class="cell-data cell-data--<%= attribute.html_class %>">
+                    <% if accessible_action?(resource, :show) -%>
+                        <a data-turbo-frame="_top" href="<%= polymorphic_path([namespace, resource]) -%>" tabindex="-1" class="action-show">
+                            <%= render_field attribute %>
+                        </a>
+                        <% else %>
+                            <%= render_field attribute %>
+                                <% end -%>
+                </td>
+                <% end %>
+                    <%= render(partial: "fields/has_many_through_field/collection_item_actions" , locals:{
+                        collection_presenter: collection_presenter,
+                        collection_field_name: collection_field_name, 
+                        page: page, namespace: namespace, 
+                        resource: resource, table_title: "page-title" })%>
+</tr>
