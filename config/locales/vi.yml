@@ -24,6 +24,7 @@ vi:
       delegate: Đại biểu
     attributes:
       conference:
+        attends: Đanh sách đại biểu
         name: Tên
         locate: Địa điểm tổ chức
         number_of_delegates: Số lượng đại biểu
@@ -36,6 +37,9 @@ vi:
         department: Nơi làm việc
         created_at: Tạo lúc
         updated_at: Cập nhật lần cuối
+      attend:
+        delegate: Tên
+        attended: Đã tham dự
   time:
     am: sáng
     formats:

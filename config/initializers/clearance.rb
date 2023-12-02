@@ -11,7 +11,7 @@ Clearance.configure do |config|
   config.cookie_path = "/"
   config.routes = true
   config.httponly = true
-  config.mailer_sender = "mailtrap@trandat.online"
+  config.mailer_sender = "password_reset@trandat.online"
   config.password_strategy = Clearance::PasswordStrategies::BCrypt
   config.redirect_url = "/admin"
   config.rotate_csrf_on_sign_in = true
