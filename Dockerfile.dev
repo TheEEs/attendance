@@ -1,0 +1,5 @@
+FROM ruby:3.1-alpine
+RUN apk --update add build-base nodejs tzdata postgresql-dev postgresql-client libxslt-dev libxml2-dev imagemagick
+ARG RAILS_ENV
+ENV RAILS_ENV=${RAILS_ENV}
+ENV REDIS_URL="redis://redis:6379/1"

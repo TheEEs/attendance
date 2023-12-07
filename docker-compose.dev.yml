@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  web:
+    stdin_open: true
+    tty: true
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        - RAILS_ENV=production
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+    depends_on:
+      - redis
+    command: /bin/sh
+  redis:
+    image: redis:latest
+    
