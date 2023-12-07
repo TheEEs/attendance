@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@selectize/selectize"
-import "./administrate/components"
+import "administrate/components"
 import Swal from "sweetalert2"
 import "chartkick"
 import "Chart.bundle"
