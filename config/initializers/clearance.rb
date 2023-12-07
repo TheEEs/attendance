@@ -5,7 +5,7 @@ end
 
 Clearance.configure do |config|
   config.allow_sign_up = true
-  # config.cookie_domain = ".example.com"
+  config.cookie_domain = "localhost"
   config.cookie_expiration = lambda { |cookies| 1.day.from_now.utc }
   config.cookie_name = "remember_token"
   config.cookie_path = "/"
@@ -16,7 +16,7 @@ Clearance.configure do |config|
   config.redirect_url = "/admin"
   config.rotate_csrf_on_sign_in = true
   config.same_site = nil
-  config.secure_cookie = true
+  config.secure_cookie = true #disable secure cookie because we gonna protect our app by nginx https
   config.signed_cookie = true
   config.sign_in_guards = []
   config.user_model = "User"
