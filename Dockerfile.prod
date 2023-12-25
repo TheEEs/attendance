@@ -5,7 +5,7 @@ ENV BUNDLE_ONLY production
 ENV REDIS_URL="redis://redis:6379/1"
 COPY . /app
 WORKDIR /app
-RUN ["bundle", "install", ""]
+RUN ["bundle", "install"]
 RUN ["rake", "assets:clobber"]
 RUN ["rails", "assets:precompile"]
 RUN ["rake", "db:migrate"]
