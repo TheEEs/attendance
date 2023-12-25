@@ -15,7 +15,9 @@ class Delegate < ApplicationRecord
 
   # def self.sort_field = :name
   def self.sort_expression
-    t = self.arel_table
-    t[:name].concat(t[:department])
+    @t ||= self.arel_table
+    @expression ||= Arel::Nodes::NamedFunction.new("TRIM", [
+                                                     Arel::Nodes::NamedFunction.new("CONCAT", [@t[:name], @t[:department]])
+                                                   ])
   end
 end
