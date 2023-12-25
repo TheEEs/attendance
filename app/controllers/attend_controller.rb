@@ -13,7 +13,7 @@ class AttendController < ApplicationController
   def make_attend
     @attend = Attend.find(attend_id) rescue nil
     if @attend&.update(attended: true)
-      @conference = @attend.conference 
+      @conference = @attend.conference
       session[:attending_conference] = @conference.hashid
       respond_to do |format|
         format.html {
@@ -37,7 +37,7 @@ class AttendController < ApplicationController
     params[:conference_id]
   end
 
-  def attend_id 
+  def attend_id
     params[:attend_id]
   end
 

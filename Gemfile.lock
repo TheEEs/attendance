@@ -123,6 +123,8 @@ GEM
     email_validator (2.2.4)
       activemodel
     erubi (1.12.0)
+    faker (3.2.2)
+      i18n (>= 1.8.11, < 2)
     ferrum (0.14)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
@@ -235,6 +237,10 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.1.0)
+    ransack (4.1.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (4.8.1)
@@ -328,6 +334,7 @@ DEPENDENCIES
   cuprite
   debug
   dotenv-rails (~> 2.8)
+  faker (~> 3.2)
   foreman (~> 0.87.2)
   hashid-rails (~> 1.0)
   importmap-rails
@@ -336,6 +343,7 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit (~> 2.3)
   rails (~> 7.0.8)
+  ransack (~> 4.1)
   redis (~> 4.0)
   rqrcode (~> 2.0)
   rspec-rails (~> 6.0)

@@ -4,13 +4,14 @@ class Attend < ApplicationRecord
   belongs_to :delegate
 
   after_update { |record|
-    broadcast_replace_later_to self.conference, target: self.conference, 
-      partial: "attend/attended_number", 
-      locals: {
-        attended_number: record.conference.attends.where(:attended => true).count,
-        total: record.conference.attends.count, 
-        conference: record.conference
-      }
+    broadcast_replace_later_to self.conference, target: self.conference,
+                                                partial: "attend/attended_number",
+                                                locals: {
+                                                  attended_number: record.conference.attends.where(:attended => true).count,
+                                                  total: record.conference.attends.count,
+                                                  conference: record.conference
+                                                }
   }
 
+  default_scope -> { eager_load(:delegate) }
 end

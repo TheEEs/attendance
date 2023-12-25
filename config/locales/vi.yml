@@ -1,4 +1,7 @@
 vi:
+  views:
+    pagination:
+      truncate: "..."
   application:
     actions:
       attend: 
@@ -22,6 +25,7 @@ vi:
     models:
       conference: Hội nghị
       delegate: Đại biểu
+      attend: Ghi danh
     attributes:
       conference:
         attends: Đanh sách đại biểu
@@ -38,7 +42,8 @@ vi:
         created_at: Tạo lúc
         updated_at: Cập nhật lần cuối
       attend:
-        delegate: Tên
+        delegate: Đại biểu
+        title: Đại biểu
         attended: Đã tham dự
   time:
     am: sáng

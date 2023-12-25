@@ -9,8 +9,16 @@ class ConferenceDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    delegates: HasManyThroughField,
-    attends: Field::HasMany,
+    delegates: HasManyThroughField.with_options(
+      limit: 10,
+      sort_by: "name",
+      direction: "desc"
+    ),
+    attends: Field::HasMany.with_options(
+      limit: 7,
+      sort_by: "attended",
+      direction: "desc"
+    ),
     locate: Field::String,
     name: Field::String,
     start_when: Field::DateTime,
@@ -36,7 +44,7 @@ class ConferenceDashboard < Administrate::BaseDashboard
     name
     locate
     start_when
-    delegates
+    attends
     created_at
     updated_at
   ].freeze

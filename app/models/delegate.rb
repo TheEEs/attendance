@@ -1,7 +1,7 @@
 class Delegate < ApplicationRecord
   has_many :attends, dependent: :destroy
   has_many :conferences, :through => :attends, inverse_of: :delegates
-  #validates :name, presence: true
+  # validates :name, presence: true
   validates :department, presence: true
 
   def display_title
@@ -11,5 +11,11 @@ class Delegate < ApplicationRecord
     else
       delegate.department
     end
+  end
+
+  # def self.sort_field = :name
+  def self.sort_expression
+    t = self.arel_table
+    t[:name].concat(t[:department])
   end
 end

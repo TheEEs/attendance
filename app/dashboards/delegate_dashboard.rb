@@ -59,7 +59,12 @@ class DelegateDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how delegates are displayed
   # across all pages of the admin dashboard.
   #
+
   def display_resource(delegate)
+    self.class.display_resource delegate
+  end
+
+  def self.display_resource(delegate)
     if delegate.name
       "#{delegate.name} - #{delegate.department}"
     else

@@ -7,9 +7,11 @@ class AttendPolicy < ApplicationPolicy
   end
 
   attr :user, :attend
+
   def initialize(user, attend)
     @user = user
     @attend = attend
   end
 
+  def destroy? = true
 end
