@@ -8,12 +8,17 @@ class AttendDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    name: Field::String,
     id: Field::Number,
-    attended: Field::Boolean,
+    attended: Field::Boolean.with_options(
+      searchable: true,
+    ),
     conference: Field::BelongsTo,
-    delegate: Field::BelongsTo,
+    delegate: Field::BelongsTo.with_options(
+      searchable: true
+    ),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -61,7 +66,7 @@ class AttendDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how attends are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(attend)
-  #   "Attend ##{attend.id}"
-  # end
+  def display_resource(attend)
+    DelegateDashboard.display_resource attend.delegate
+  end
 end

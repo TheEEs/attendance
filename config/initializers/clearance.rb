@@ -16,7 +16,7 @@ Clearance.configure do |config|
   config.redirect_url = "/admin"
   config.rotate_csrf_on_sign_in = true
   config.same_site = nil
-  config.secure_cookie = false #disable secure cookie because we gonna protect our app by nginx https
+  config.secure_cookie = false
   config.signed_cookie = true
   config.sign_in_guards = []
   config.user_model = "User"

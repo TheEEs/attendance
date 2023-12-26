@@ -29,7 +29,7 @@ to display a collection of resources in an HTML table.
         scope="col"
         aria-sort="<%= sort_order(collection_presenter.ordered_html_class(attr_name)) %>">
         <%= link_to(sanitized_order_params(page, collection_field_name).merge(
-          collection_presenter.order_params_for(attr_name, key: collection_field_name)
+          collection_presenter.order_params_for(attr_name, key: collection_field_name) { params[collection_field_name]&.[]("page") }
         )) do %>
         <%= t(
           "helpers.label.#{collection_presenter.resource_name}.#{attr_name}",
@@ -56,7 +56,7 @@ to display a collection of resources in an HTML table.
   </thead>
   <tbody id="records">
     <% resources.each do |resource| %>
-      <%= render partial: "collection_record", locals: {collection_presenter: collection_presenter,
+      <%= render partial: "fields/has_many/collection_record", locals: {collection_presenter: collection_presenter,
                         collection_field_name: collection_field_name, page: page, namespace: namespace, resource:
                         resource, table_title: "page-title"} %>
     <% end %>

@@ -8,9 +8,9 @@
                         <a data-turbo-frame="_top" href="<%= polymorphic_path([namespace, resource]) -%>" tabindex="-1" class="action-show">
                             <%= render_field attribute %>
                         </a>
-                        <% else %>
+                    <% else %>
                             <%= render_field attribute %>
-                                <% end -%>
+                    <% end -%>
                 </td>
                 <% end %>
                     <%= render(partial: "fields/has_many_through_field/collection_item_actions" , locals:{

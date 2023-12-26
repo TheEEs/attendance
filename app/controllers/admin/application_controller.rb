@@ -35,7 +35,11 @@ module Admin
         else
           flash[:error] = requested_resource.errors.full_messages.join("<br/>")
         end
-        redirect_to after_resource_destroyed_path(requested_resource)
+        if (redirect_url = detach_params[:redirect_url]).nil?
+          redirect_to after_resource_destroyed_path(requested_resource)
+        else
+          redirect_to redirect_url
+        end
       else
         @detach_class = @detach_class.pluralize
         if @parent_records = requested_resource.send(@detach_class).delete(@detach_id)
@@ -51,7 +55,7 @@ module Admin
       resource = new_resource(resource_params)
       authorize_resource(resource)
       if resource.respond_to? :user=
-        resource.user = current_user 
+        resource.user = current_user
       end
       if resource.save
         redirect_to(
@@ -75,19 +79,20 @@ module Admin
     private
 
     def detach_params
-      params.permit(:detach, :parent_id, :parent_class)
+      params.permit(:detach, :parent_id, :parent_class, :redirect_url)
     end
 
     helper_method :query_string
+
+    helper_method :pagination_params
+    def pagination_params(name)
+      params.permit(name.pluralize => {}).to_query
+    end
 
     private
 
     def query_string
       request.query_string
-    end
-
-    def pagination_params(name)
-      params.permit(name.pluralize => {}).to_query
     end
   end
 end
