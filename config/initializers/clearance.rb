@@ -5,7 +5,7 @@ end
 
 Clearance.configure do |config|
   config.allow_sign_up = true
-  config.cookie_domain = lambda { |request| request.host }
+  config.cookie_domain = nil
   config.cookie_expiration = lambda { |cookies| 1.day.from_now.utc }
   config.cookie_name = "remember_token"
   config.cookie_path = "/"
@@ -15,7 +15,7 @@ Clearance.configure do |config|
   config.password_strategy = Clearance::PasswordStrategies::BCrypt
   config.redirect_url = "/admin"
   config.rotate_csrf_on_sign_in = true
-  config.same_site = nil
+  config.same_site = :strict
   config.secure_cookie = nil
   config.signed_cookie = true
   config.sign_in_guards = []
