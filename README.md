@@ -4,22 +4,22 @@
 
 ## Installation
 
-You need `Docker` and `Docker Compose` installed on your computer, and some way to expose your app to the Internet so users can access to it.
+You need `Docker` and `Docker Compose` installed on your computer, and some ways to expose your app to the Internet so users can access to it.
 
 #### Running in production
-Firstly, let's modify parameters in `.env.production` to fit your needs. Here's we have:
+Firstly, let's modify variables in `.env.production` to fit your needs. Here we have:
 
 * MAILTRAP_API_KEY: API key used to send email via Mailtrap.
 * APP_DOMAIN: The domain that Clearance uses to determine host of password reset link.
-* RAILS_SERVE_STATIC_FILES: Tells rails app to serve static assets otherwise you should include an addition container for serving static assets in `/app/public` directory.
+* RAILS_SERVE_STATIC_FILES: Tells rails app to serve static assets otherwise you have to launch an addition service to serve static assets in `/app/public` directory.
 
-After making sure everything is OK, in your terminal, type:
+After making sure everything is ready, in your terminal:
 ```bash
 $ docker-compose -f docker-compose.prod.yml up -d
 ```
 
 #### Running in development
-In your terminal, type:
+In your terminal:
 ```bash
 $ docker-compose -f docker-compose.dev.yml up -d
 $ docker-compose -f docker-compose.dev.yml exec web /bin/sh
